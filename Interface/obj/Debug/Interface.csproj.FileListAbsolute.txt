@@ -5,3 +5,13 @@ C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Interface\obj\Debug\Interface.cs
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Interface\obj\Debug\Interface.exe
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Interface\obj\Debug\Interface.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\obj\Debug\Interface.csproj.AssemblyReference.cache
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\obj\Debug\Interface.csproj.CoreCompileInputs.cache
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\obj\Debug\Interface.exe
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\obj\Debug\Interface.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\bin\Debug\Interface.exe.config
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\bin\Debug\Interface.exe
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\bin\Debug\Interface.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\bin\Debug\Cards.dll
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\bin\Debug\Cards.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Interface\obj\Debug\Interface.csproj.CopyComplete

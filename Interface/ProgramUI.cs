@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Interface
 {
     class ProgramUI
     {
-
+        Deck deck = new Deck();
+public void run() { deck.Deal(deck.ShuffleDeck(deck.CreateDeck())); }
     }
 }

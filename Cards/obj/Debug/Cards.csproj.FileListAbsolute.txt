@@ -3,3 +3,9 @@ C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Cards\bin\Debug\Cards.pdb
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Cards\obj\Debug\Cards.csproj.CoreCompileInputs.cache
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Cards\obj\Debug\Cards.dll
 C:\ElevenFiftyProjects\DotNetProjects\GameOfWar\Cards\obj\Debug\Cards.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\bin\Debug\Cards.dll
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\bin\Debug\Cards.pdb
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\obj\Debug\Cards.csproj.AssemblyReference.cache
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\obj\Debug\Cards.csproj.CoreCompileInputs.cache
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\obj\Debug\Cards.dll
+C:\Users\Jim\Documents\ElevenFiftyProjects\DotNetProjects\War\Cards\obj\Debug\Cards.pdb
