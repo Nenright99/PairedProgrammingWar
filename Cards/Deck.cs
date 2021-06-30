@@ -9,16 +9,28 @@ namespace Cards
     public class Deck
     {
         //Create deck
-        public void CreateDeck()
+
+        
+        public List<int> CreateDeck()
         {
-            Queue<int> _deck = new Queue<int>();
+            List<int> _deck = new List<int>();
             for(int i = 1; i <= 52; i++)
             {
-                _deck.Enqueue(i);
-                Console.WriteLine(i.ToString());
+                _deck.Add(i);
             }
+            return _deck;
         }
         //Shuffle
+
+        public Queue<int> ShuffleDeck(List<int> deck)
+        {
+            Random rnd = new Random();
+            int card = rnd.Next(51);
+            Queue<int> playingDeck = new Queue<int>();
+            int x = card + 1;
+            playingDeck.Enqueue(x);
+            return playingDeck;
+        }
         //Deal
 
     }
