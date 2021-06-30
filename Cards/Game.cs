@@ -8,5 +8,8 @@ namespace Cards
 {
     class Game
     {
+        //Who won hand
+        //Return cards to winners deck
+        //Assess if a player has won
     }
 }
