@@ -18,6 +18,7 @@ namespace Interface
                 Console.Clear();
                 int PlayerA = 0;
                 int PlayerB = 0;
+                int Draw = 0;
                 Console.WriteLine(
                     "1. Play an entire Game of War and see the winner.\n" +
                     "2. See current winner standings for multiple games. \n" +
@@ -28,17 +29,35 @@ namespace Interface
                 switch (userInput)
                 {
                     case "1":
-                        Queue<int> playingDeck = deck.ShuffleDeck(deck.CreateDeck());
+                        Queue<int> firstDeck = deck.ShuffleDeck(deck.CreateDeck());
+                        Queue<int> secondDeck = deck.ShuffleDeck(firstDeck.ToList<int>());
+                        Queue<int> playingDeck = deck.ShuffleDeck(secondDeck.ToList<int>());
                         Queue<int>[] game = deck.Deal(playingDeck);
-                        deck.Game(game[0], game[1]);
+                        string result = deck.Game(game[0], game[1]);
+                       
+                        switch (result)
+                        {
+                            case "Player A":
+                                PlayerA++;
+                                break;
+                            case "Player B":
+                                PlayerB++;
+                                break;
+                            case "Draw":
+                                Draw++;
+                                break;
+                            default:
+                                break;
+                        }
                         break;
 
                     case "2":
-                        Console.WriteLine(PlayerA.ToString());
-                        Console.WriteLine(PlayerB.ToString());
+                        Console.WriteLine("Player A Wins: " + PlayerA.ToString());
+                        Console.WriteLine("Player B Wins: " + PlayerB.ToString());
+                        Console.WriteLine("Draws: " + Draw.ToString());
                         Console.ReadLine();
-
                         break;
+
                     case "3":
                         isRunning = false;
                         break;

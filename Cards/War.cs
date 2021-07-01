@@ -81,7 +81,8 @@ namespace Cards
             int handB = playerB.Dequeue();
             hand.Enqueue(handA);
             hand.Enqueue(handB);
-
+            List<int> shuffleHand = hand.ToList<int>();
+            hand = ShuffleDeck(shuffleHand);
             Queue<int>[] game = Compare(handA, handB, hand, playerA, playerB);
             return game;
         }
@@ -90,7 +91,7 @@ namespace Cards
         {
             if (handA % 13 > handB % 13)
             {
-                Console.WriteLine($"PlayerA:{(handA % 13).ToString()}  PlayerB:{(handB % 13).ToString()}     Deck Counts A {playerA.Count().ToString()}  B {playerB.Count().ToString()}");
+                Console.WriteLine($"PlayerA:{handA % 13}  PlayerB:{handB % 13}     Deck Counts A {playerA.Count()}  B {playerB.Count()}");
                 bool isRunning = true;
                 while (isRunning)
                 {
@@ -106,7 +107,7 @@ namespace Cards
             }
             else if (handB % 13 > handA % 13)
             {
-                Console.WriteLine($"PlayerA:{(handA % 13).ToString()}  PlayerB:{(handB % 13).ToString()}     Deck Counts A {playerA.Count().ToString()}  B {playerB.Count().ToString()}");
+                Console.WriteLine($"PlayerA:{handA % 13}  PlayerB:{handB % 13}     Deck Counts A {playerA.Count()}  B {playerB.Count()}");
                 bool isRunning = true;
                 while (isRunning)
                 {
@@ -122,8 +123,12 @@ namespace Cards
             }
             else if (handA % 13 == handB % 13)
             {
-                Console.WriteLine($"PlayerA:{(handA%13).ToString()}  PlayerB:{(handB%13).ToString()}     Deck Counts A {playerA.Count().ToString()}  B {playerB.Count().ToString()}");
-                if (playerA.Count() < 3 || playerB.Count() < 3)
+                Console.WriteLine($"PlayerA:{handA % 13}  PlayerB:{handB % 13}     Deck Counts A {playerA.Count()}  B {playerB.Count()}");
+                if (playerA.Count() == 0 || playerB.Count() == 0)
+                {
+
+                }
+                else if (playerA.Count() < 3 || playerB.Count() < 3)
                 {
                     int remaining = Math.Min(playerA.Count(), playerB.Count());
                     int cardA = 0;
@@ -135,6 +140,8 @@ namespace Cards
                         hand.Enqueue(cardA);
                         hand.Enqueue(cardB);
                     }
+                    List<int> shuffleHand = hand.ToList<int>();
+                    hand = ShuffleDeck(shuffleHand);
                     Queue<int>[] game = Compare(cardA, cardB, hand, playerA, playerB);
                     return game;
                 }
@@ -164,10 +171,11 @@ namespace Cards
         }
 
 
-        public void Game(Queue<int> playerA, Queue<int> playerB)
+        public string Game(Queue<int> playerA, Queue<int> playerB)
         {
             int iterations = 0;
             bool isRunning = true;
+            string result = "";
             while (isRunning)
             {
                 if(iterations >= 3000)
@@ -175,18 +183,21 @@ namespace Cards
                     Console.WriteLine("Reached 3000 turns, it's a draw");
                     Console.ReadLine();
                     isRunning = false;
+                    result = "Draw";
                 }
                 else if (playerB.Count() == 0)
                 {
                     Console.WriteLine("Player A has won!");
                     Console.ReadLine();
                     isRunning = false;
+                    result = "Player A";
                 }
                 else if (playerA.Count() == 0)
                 {
                     Console.WriteLine("Player B has won!");
                     Console.ReadLine();
                     isRunning = false;
+                    result = "Player B";
                 }
                 else
                 {
@@ -196,6 +207,7 @@ namespace Cards
                 }
                 iterations += 1;
             }
+            return result;
         }
 
     }
