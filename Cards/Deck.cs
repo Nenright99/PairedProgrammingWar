@@ -5,32 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Cards
 {
-    public class Deck
+    public class War
     {
-       
-          public List<int> CreateDeck()
+        //Create deck
+        public List<int> CreateDeck()
         {
-
+            List<int> _deck = new List<int>();
+            for (int i = 1; i <= 52; i++)
             {
-                List<int> _deck = new List<int>();
-                for (int i = 1; i <= 52; i++)
-                {
-                    _deck.Add(i);
-                    Console.WriteLine(i.ToString());
-                    _deck.Add(i);
-                }
-                return _deck;
+                _deck.Add(i); ;
             }
+            return _deck;
         }
-
-
         //Shuffle
-
         public Queue<int> ShuffleDeck(List<int> _deck)
         {
             bool isrunning = true;
             Queue<int> playingDeck = new Queue<int>();
-
             while (isrunning)
             {
                 Random rnd = new Random();
@@ -44,15 +35,12 @@ namespace Cards
                 }
                 else
                 {
-
                 }
             }
             return playingDeck;
-
         }
-
         //Deal
-        public void Deal(Queue<int> _deck)
+        public Queue<int>[] Deal(Queue<int> _deck)
         {
             Queue<int> DeckA = new Queue<int>();
             Queue<int> DeckB = new Queue<int>();
@@ -69,15 +57,102 @@ namespace Cards
                 }
                 else
                 {
-
                 }
-
             }
-            Console.WriteLine($"PlayerA:{DeckA.Count()} PlayerB:{DeckB.Count()}");
-            Console.ReadLine();
+            Queue<int>[] game = { DeckA, DeckB };
+            return game;
+        }
+        public Queue<int>[] Hand(Queue<int> playerA, Queue<int> playerB)
+        {
+            Queue<int> hand = new Queue<int>();
+            int handA = playerA.Dequeue();
+            int handB = playerB.Dequeue();
+            hand.Enqueue(handA);
+            hand.Enqueue(handB);
 
+            Queue<int>[] game = Compare(handA, handB, hand, playerA, playerB);
+            return game;
         }
 
+        public Queue<int>[] Compare(int handA, int handB, Queue<int> hand, Queue<int> playerA, Queue<int> playerB)
+        {
+            if (handA % 13 > handB % 13)
+            {
+                bool isRunning = true;
+                while (isRunning)
+                {
+                    int card = hand.Dequeue();
+                    playerA.Enqueue(card);
+                    if (hand.Count() == 0)
+                    {
+                        isRunning = false;
+                    }
+                }
+                Queue<int>[] game = { playerA, playerB };
+                return game;
+            }
+            else if (handB % 13 > handA % 13)
+            {
+                bool isRunning = true;
+                while (isRunning)
+                {
+                    int card = hand.Dequeue();
+                    playerB.Enqueue(card);
+                    if (hand.Count() == 0)
+                    {
+                        isRunning = false;
+                    }
+                }
+                Queue<int>[] game = { playerA, playerB };
+                return game;
+            }
+            else if (handA % 13 == handB % 13)
+            {
+                int d1 = playerA.Dequeue();
+                int d2 = playerB.Dequeue();
+                int d3 = playerA.Dequeue();
+                int d4 = playerB.Dequeue();
+                int warA = playerA.Dequeue();
+                int warB = playerB.Dequeue();
+                hand.Enqueue(d1);
+                hand.Enqueue(d2);
+                hand.Enqueue(d3);
+                hand.Enqueue(d4);
+                hand.Enqueue(warA);
+                hand.Enqueue(warB);
+                Queue<int>[] game = Compare(warA, warB, hand, playerA, playerB);
+                return game;
+            }
+            else
+            {
+                Queue<int>[] game = { playerA, playerB };
+                return game;
+            }
+        }
+        public void Game(Queue<int> playerA, Queue<int> playerB)
+        {
+            bool isRunning = true;
+            while (isRunning)
+            {
+                if (playerB.Count() == 0)
+                {
+                    Console.WriteLine("Player A has won!");
+                    Console.ReadLine();
+                    isRunning = false;
+                }
+                else if (playerA.Count() == 0)
+                {
+                    Console.WriteLine("Player B has won!");
+                    Console.ReadLine();
+                    isRunning = false;
+                }
+                else
+                {
+                    Queue<int>[] game = Hand(playerA, playerB);
+                    playerA = game[0];
+                    playerB = game[1];
+                }
+            }
+        }
     }
-
 }
