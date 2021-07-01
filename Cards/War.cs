@@ -146,7 +146,28 @@ namespace Cards
 
         public void Game(Queue<int> playerA, Queue<int> playerB)
         {
-            Hand(playerA, playerB);
+            bool isRunning = true;
+            while (isRunning)
+            {
+                if(playerB.Count() == 0)
+                {
+                    Console.WriteLine("Player A has won!");
+                    Console.ReadLine();
+                    isRunning = false;
+                }
+                else if(playerA.Count() == 0)
+                {
+                    Console.WriteLine("Player B has won!");
+                    Console.ReadLine();
+                    isRunning = false;
+                }
+                else
+                {
+                    Queue<int>[] game = Hand(playerA, playerB);
+                    playerA = game[0];
+                    playerB = game[1];
+                }
+            }
         }
 
     }
