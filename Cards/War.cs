@@ -22,7 +22,7 @@ namespace Cards
 
         //Shuffle
 
-        public Queue<int> ShuffleDeck(Decks _deck)
+        public Queue<int> ShuffleDeck(List<int> _deck)
         {
             bool isrunning = true;
             Queue<int> playingDeck = new Queue<int>();
@@ -48,7 +48,7 @@ namespace Cards
         }
 
         //Deal
-        public void Deal(Queue<int> _deck)
+        public Queue<int>[] Deal(Queue<int> _deck)
         {
             Queue<int> DeckA = new Queue<int>();
             Queue<int> DeckB = new Queue<int>();
@@ -69,12 +69,12 @@ namespace Cards
                 }
 
             }
-            Console.WriteLine($"PlayerA:{DeckA.Count()} PlayerB:{DeckB.Count()}");
-            Console.ReadLine();
+            Queue<int>[] game = { DeckA, DeckB };
+            return game;
 
         }
 
-        public Decks Hand(Decks playerA, Decks playerB)
+        public Queue<int>[] Hand(Queue<int> playerA, Queue<int> playerB)
         {
             Queue<int> hand = new Queue<int>();
             int handA = playerA.Dequeue();
@@ -82,9 +82,11 @@ namespace Cards
             hand.Enqueue(handA);
             hand.Enqueue(handB);
             Compare(handA, handB, hand, playerA, playerB);
+            Queue<int>[] game = { playerA, playerB };
+            return game;
         }
 
-        public void Compare(int handA, int handB, Queue<int> hand, Queue<int> playerA, Queue<int> playerB)
+        public Queue<int>[] Compare(int handA, int handB, Queue<int> hand, Queue<int> playerA, Queue<int> playerB)
         {
             if (handA > handB)
             {
@@ -98,6 +100,8 @@ namespace Cards
                         isRunning = false;
                     }
                 }
+                Queue<int>[] game = { playerA, playerB };
+                return game;
             }
             else if (handB > handA)
             {
@@ -111,6 +115,8 @@ namespace Cards
                         isRunning = false;
                     }
                 }
+                Queue<int>[] game = { playerA, playerB };
+                return game;
             }
             else if (handA == handB)
             {
@@ -126,14 +132,21 @@ namespace Cards
                 hand.Enqueue(d4);
                 hand.Enqueue(warA);
                 hand.Enqueue(warB);
-                Compare(warA, warB, hand, playerA, playerB);
+                Queue<int>[] game = Compare(warA, warB, hand, playerA, playerB);
+                return game;
+
+            }
+            else
+            {
+                Queue<int>[] game = { playerA, playerB };
+                return game;
             }
         }
 
 
-        public void Game()
+        public void Game(Queue<int> playerA, Queue<int> playerB)
         {
-
+            Hand(playerA, playerB);
         }
 
     }

@@ -12,7 +12,8 @@ namespace Interface
         War deck = new War();
         public void run()
         {
-            Decks playingDeck = new Decks(deck.ShuffleDeck(deck.CreateDeck()));
+            Queue<int> playingDeck = deck.ShuffleDeck(deck.CreateDeck());
+
         }
     }
 }
