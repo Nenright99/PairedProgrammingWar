@@ -13,6 +13,8 @@ namespace Interface
         public void run()
         {
             Queue<int> playingDeck = deck.ShuffleDeck(deck.CreateDeck());
+            Queue<int>[] game = deck.Deal(playingDeck);
+            deck.Game(game[0], game[1]);
 
         }
     }

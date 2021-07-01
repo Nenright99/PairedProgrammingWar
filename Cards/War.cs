@@ -81,14 +81,14 @@ namespace Cards
             int handB = playerB.Dequeue();
             hand.Enqueue(handA);
             hand.Enqueue(handB);
-            Compare(handA, handB, hand, playerA, playerB);
-            Queue<int>[] game = { playerA, playerB };
+            
+            Queue<int>[] game = Compare(handA, handB, hand, playerA, playerB);
             return game;
         }
 
         public Queue<int>[] Compare(int handA, int handB, Queue<int> hand, Queue<int> playerA, Queue<int> playerB)
         {
-            if (handA > handB)
+            if (handA % 13 > handB % 13)
             {
                 bool isRunning = true;
                 while (isRunning)
@@ -103,7 +103,7 @@ namespace Cards
                 Queue<int>[] game = { playerA, playerB };
                 return game;
             }
-            else if (handB > handA)
+            else if (handB % 13 > handA % 13)
             {
                 bool isRunning = true;
                 while (isRunning)
@@ -118,7 +118,7 @@ namespace Cards
                 Queue<int>[] game = { playerA, playerB };
                 return game;
             }
-            else if (handA == handB)
+            else if (handA % 13 == handB % 13)
             {
                 int d1 = playerA.Dequeue();
                 int d2 = playerB.Dequeue();
