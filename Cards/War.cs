@@ -26,10 +26,9 @@ namespace Cards
         {
             bool isrunning = true;
             Queue<int> playingDeck = new Queue<int>();
-
+            Random rnd = new Random();
             while (isrunning)
             {
-                Random rnd = new Random();
                 int card = rnd.Next(_deck.Count() - 1);
                 int x = _deck[card];
                 _deck.RemoveAt(card);
@@ -73,7 +72,7 @@ namespace Cards
             return game;
 
         }
-
+        //Plays a hand
         public Queue<int>[] Hand(Queue<int> playerA, Queue<int> playerB)
         {
             Queue<int> hand = new Queue<int>();
@@ -86,7 +85,7 @@ namespace Cards
             Queue<int>[] game = Compare(handA, handB, hand, playerA, playerB);
             return game;
         }
-
+        //Compares players cards
         public Queue<int>[] Compare(int handA, int handB, Queue<int> hand, Queue<int> playerA, Queue<int> playerB)
         {
             if (handA % 13 > handB % 13)
@@ -170,18 +169,17 @@ namespace Cards
                 return game;
             }
         }
-
-
+        //Cycles through hands until game is over
         public int Game(Queue<int> playerA, Queue<int> playerB)
         {
             int iterations = 0;
-            bool isRunning = true;
             int result = 0;
+            bool isRunning = true;
             while (isRunning)
             {
-                if(iterations >= 3000)
+                if (iterations >= 5000)
                 {
-                    Console.WriteLine("Reached 3000 turns, it's a draw");
+                    Console.WriteLine("Reached 5000 turns, it's a draw");
                     Console.ReadLine();
                     isRunning = false;
                     result = 0;
@@ -206,7 +204,7 @@ namespace Cards
                     playerA = game[0];
                     playerB = game[1];
                 }
-                iterations += 1;
+                iterations++;
             }
             return result;
         }
