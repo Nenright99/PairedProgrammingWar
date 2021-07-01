@@ -126,7 +126,8 @@ namespace Cards
                 Console.WriteLine($"PlayerA:{handA % 13}  PlayerB:{handB % 13}     Deck Counts A {playerA.Count()}  B {playerB.Count()}");
                 if (playerA.Count() == 0 || playerB.Count() == 0)
                 {
-
+                    Queue<int>[] game = { playerA, playerB };
+                    return game;
                 }
                 else if (playerA.Count() < 3 || playerB.Count() < 3)
                 {
@@ -171,11 +172,11 @@ namespace Cards
         }
 
 
-        public string Game(Queue<int> playerA, Queue<int> playerB)
+        public int Game(Queue<int> playerA, Queue<int> playerB)
         {
             int iterations = 0;
             bool isRunning = true;
-            string result = "";
+            int result = 0;
             while (isRunning)
             {
                 if(iterations >= 3000)
@@ -183,21 +184,21 @@ namespace Cards
                     Console.WriteLine("Reached 3000 turns, it's a draw");
                     Console.ReadLine();
                     isRunning = false;
-                    result = "Draw";
+                    result = 0;
                 }
                 else if (playerB.Count() == 0)
                 {
                     Console.WriteLine("Player A has won!");
                     Console.ReadLine();
                     isRunning = false;
-                    result = "Player A";
+                    result = 1;
                 }
                 else if (playerA.Count() == 0)
                 {
                     Console.WriteLine("Player B has won!");
                     Console.ReadLine();
                     isRunning = false;
-                    result = "Player B";
+                    result = 2;
                 }
                 else
                 {

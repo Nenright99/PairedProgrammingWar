@@ -12,13 +12,13 @@ namespace Interface
         War deck = new War();
         public void run()
         {
+            int PlayerA = 0;
+            int PlayerB = 0;
+            int Draw = 0;
             bool isRunning = true;
             while (isRunning)
             {
                 Console.Clear();
-                int PlayerA = 0;
-                int PlayerB = 0;
-                int Draw = 0;
                 Console.WriteLine(
                     "1. Play an entire Game of War and see the winner.\n" +
                     "2. See current winner standings for multiple games. \n" +
@@ -33,17 +33,17 @@ namespace Interface
                         Queue<int> secondDeck = deck.ShuffleDeck(firstDeck.ToList<int>());
                         Queue<int> playingDeck = deck.ShuffleDeck(secondDeck.ToList<int>());
                         Queue<int>[] game = deck.Deal(playingDeck);
-                        string result = deck.Game(game[0], game[1]);
-                       
-                        switch (result)
+                        int result = deck.Game(game[0], game[1]);
+
+                        switch (result.ToString())
                         {
-                            case "Player A":
+                            case "1":
                                 PlayerA++;
                                 break;
-                            case "Player B":
+                            case "2":
                                 PlayerB++;
                                 break;
-                            case "Draw":
+                            case "0":
                                 Draw++;
                                 break;
                             default:
